@@ -33,14 +33,14 @@ public class HelpScreen extends GLScreen {
 		super(game);
 		
 		guiCam = new Camera2D(glGraphics, 320, 480);
-		nextBounds = new Rectangle(320-64, 0, 64, 64);
+		nextBounds = new Rectangle(320 - 32, 32, 32, 32);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 1);
 	}
 	
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help1.png");
+		helpImage = new Texture(glGame, "help.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 320, 480); // TODO: review this
 	}
 	
@@ -61,7 +61,7 @@ public class HelpScreen extends GLScreen {
 			
 			if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 				Assets.playSound(Assets.clickSound);  /// UPDATE
-				game.setScreen(new HelpScreen(game)); /// UPDATE
+				game.setScreen(new HelpScreen2(game)); /// UPDATE
 				return;
 			}
 		}
@@ -83,7 +83,7 @@ public class HelpScreen extends GLScreen {
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		
 		batcher.beginBatch(Assets.items);
-		batcher.drawSprite(320 - 32,  32,  -64,  64, Assets.arrow);
+		batcher.drawSprite(320 - 32,  32, -32,  32, Assets.arrow);
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);

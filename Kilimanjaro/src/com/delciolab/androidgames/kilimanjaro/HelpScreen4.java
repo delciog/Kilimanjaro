@@ -33,14 +33,14 @@ public class HelpScreen4 extends GLScreen {
 		super(game);
 		
 		guiCam = new Camera2D(glGraphics, 320, 480);
-		nextBounds = new Rectangle(320 - 64, 0, 64, 64);
+		nextBounds = new Rectangle(320 - 64, 0, 32, 32);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 1);
 	}
 	
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help4.png");
+		helpImage = new Texture(glGame, "help3.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 320, 480);
 	}
 	
@@ -78,6 +78,13 @@ public class HelpScreen4 extends GLScreen {
 		
 		batcher.beginBatch(helpImage);
 		batcher.drawSprite(160, 240, 320, 480, helpRegion);
+		batcher.endBatch();
+		
+		gl.glEnable(GL10.GL_BLEND);
+		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		
+		batcher.beginBatch(Assets.items);
+		batcher.drawSprite(320 - 32, 32, -32, 32, Assets.arrow);
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);

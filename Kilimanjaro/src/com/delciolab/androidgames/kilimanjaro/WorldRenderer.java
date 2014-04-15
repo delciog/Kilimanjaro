@@ -92,7 +92,7 @@ public class WorldRenderer {
 	private void renderItems() {
 		int len = world.springs.size();
 		for (int i = 0; i < len; i++) {
-			Spring spring = world.springs.get(i);
+			Tent spring = world.springs.get(i);
 			batcher.drawSprite(spring.position.x, spring.position.y + 5, 1, 1, Assets.spring);
 		}
 		
@@ -107,7 +107,7 @@ public class WorldRenderer {
 	private void renderSquirrels() {
 		int len = world.squirrels.size();
 		for (int i = 0; i < len; i++) {
-			Squirrel squirrel = world.squirrels.get(i);
+			Bird squirrel = world.squirrels.get(i);
 			TextureRegion keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
 			float side = squirrel.velocity.x < 0 ? -1 : 1;
 			batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 1, 1, keyFrame);
@@ -115,7 +115,7 @@ public class WorldRenderer {
 	}
 
 	private void renderCastle() {
-		Castle castle = world.castle;
+		FinalGoal castle = world.castle;
 		batcher.drawSprite(castle.position.x, castle.position.y, 2, 2, Assets.castle);
 	}
 }

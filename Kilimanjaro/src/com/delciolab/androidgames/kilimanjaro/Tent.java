@@ -8,11 +8,11 @@ package com.delciolab.androidgames.kilimanjaro;
 
 import com.delciolab.androidgames.framework.GameObject;
 
-public class Spring extends GameObject {
+public class Tent extends GameObject {
 	public static float SPRING_WIDTH = 1.0f;
 	public static float SPRING_HEIGHT = 1.0f;
 	
-	public Spring(float x, float y) {
+	public Tent(float x, float y) {
 		super(x, y, SPRING_WIDTH, SPRING_HEIGHT);
 	}
 }

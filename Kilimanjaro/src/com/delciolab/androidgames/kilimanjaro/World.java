@@ -30,10 +30,10 @@ public class World {
 	
 	public final Kuba kuba;
 	public final List<Platform> platforms;
-	public final List<Spring> springs;
-	public final List<Squirrel> squirrels;
+	public final List<Tent> springs;
+	public final List<Bird> squirrels;
 	public final List<Coin> coins;
-	public Castle castle;
+	public FinalGoal castle;
 	public final WorldListener listener;
 	public final Random rand;
 	
@@ -44,8 +44,8 @@ public class World {
 	public World(WorldListener listener) {
 		this.kuba = new Kuba(5, 1);
 		this.platforms = new ArrayList<Platform>();
-		this.springs = new ArrayList<Spring>();
-		this.squirrels = new ArrayList<Squirrel>();
+		this.springs = new ArrayList<Tent>();
+		this.squirrels = new ArrayList<Bird>();
 		this.coins = new ArrayList<Coin>();
 		this.listener = listener;
 		rand = new Random();
@@ -67,12 +67,12 @@ public class World {
 			platforms.add(platform);
 			
 			if (rand.nextFloat() > 0.9f && type != Platform.PLATFORM_TYPE_MOVING) {
-				Spring spring = new Spring(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Spring.SPRING_HEIGHT / 2);
+				Tent spring = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.SPRING_HEIGHT / 2);
 				springs.add(spring);
 			}
 			
 			if (y > WORLD_HEIGHT / 3 && rand.nextFloat() > 0.8f) {
-				Squirrel squirrel = new Squirrel(platform.position.x + rand.nextFloat(), platform.position.y + Squirrel.SQUIRREL_HEIGHT + rand.nextFloat() * 2);
+				Bird squirrel = new Bird(platform.position.x + rand.nextFloat(), platform.position.y + Bird.BIRD_HEIGHT + rand.nextFloat() * 2);
 				squirrels.add(squirrel);
 			}
 			
@@ -84,7 +84,7 @@ public class World {
 			y += (maxJumpHeigth - 0.5f);
 			y -= rand.nextFloat() * (maxJumpHeigth / 3);
 		}
-		castle = new Castle(WORLD_WIDTH / 2, y);
+		castle = new FinalGoal(WORLD_WIDTH / 2, y);
 	}
 
 	public void update(float deltaTime, float accelX) {
@@ -124,7 +124,7 @@ public class World {
 	private void updateSquirrels(float deltaTime) {
 		int len = squirrels.size();
 		for (int i = 0; i < len; i++) {
-			Squirrel squirrel = squirrels.get(i);
+			Bird squirrel = squirrels.get(i);
 			squirrel.update(deltaTime);
 		}
 	}
@@ -192,7 +192,7 @@ public class World {
 		
 		len = springs.size();
 		for (int i = 0; i < len; i++) {
-			Spring spring = springs.get(i);
+			Tent spring = springs.get(i);
 			if (kuba.position.y > spring.position.y) {
 				if (OverlapTester.overlapRectangles(kuba.bounds, spring.bounds)) {
 					kuba.hitSpring();
