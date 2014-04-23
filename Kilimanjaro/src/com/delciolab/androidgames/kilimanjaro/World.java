@@ -18,7 +18,7 @@ public class World {
 		public void jump();
 		public void highJump();
 		public void hit();
-		public void coin();
+		public void tent();
 	}
 		
 	public static final float WORLD_WIDTH = 10;
@@ -30,10 +30,10 @@ public class World {
 	
 	public final Kuba kuba;
 	public final List<Platform> platforms;
-	public final List<Tent> springs;
-	public final List<Bird> squirrels;
-	public final List<Coin> coins;
-	public FinalGoal castle;
+	public final List<Tent> tents;
+	public final List<Bird> birds;
+	public final List<Backpack> backpacks;
+	public FinalGoal finalgoal;
 	public final WorldListener listener;
 	public final Random rand;
 	
@@ -44,9 +44,9 @@ public class World {
 	public World(WorldListener listener) {
 		this.kuba = new Kuba(5, 1);
 		this.platforms = new ArrayList<Platform>();
-		this.springs = new ArrayList<Tent>();
-		this.squirrels = new ArrayList<Bird>();
-		this.coins = new ArrayList<Coin>();
+		this.tents = new ArrayList<Tent>();
+		this.birds = new ArrayList<Bird>();
+		this.backpacks = new ArrayList<Backpack>();
 		this.listener = listener;
 		rand = new Random();
 		generateLevel();
@@ -67,31 +67,32 @@ public class World {
 			platforms.add(platform);
 			
 			if (rand.nextFloat() > 0.9f && type != Platform.PLATFORM_TYPE_MOVING) {
-				Tent spring = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.SPRING_HEIGHT / 2);
-				springs.add(spring);
+//				Tent tent = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.SPRING_HEIGHT / 2);
+				Tent tent = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.TENT_HEIGHT / 4);
+				tents.add(tent);
 			}
 			
 			if (y > WORLD_HEIGHT / 3 && rand.nextFloat() > 0.8f) {
-				Bird squirrel = new Bird(platform.position.x + rand.nextFloat(), platform.position.y + Bird.BIRD_HEIGHT + rand.nextFloat() * 2);
-				squirrels.add(squirrel);
+				Bird bird = new Bird(platform.position.x + rand.nextFloat(), platform.position.y + Bird.BIRD_HEIGHT + rand.nextFloat() * 2);
+				birds.add(bird);
 			}
 			
 			if (rand.nextFloat() > 0.6f) {
-				Coin coin = new Coin(platform.position.x + rand.nextFloat(), platform.position.y + Coin.COIN_HEIGHT + rand.nextFloat() * 3);
-				coins.add(coin);
+				Backpack backPack = new Backpack(platform.position.x + rand.nextFloat(), platform.position.y + Backpack.BACKPACK_HEIGHT + rand.nextFloat() * 3);
+				backpacks.add(backPack);
 			}
 			
 			y += (maxJumpHeigth - 0.5f);
 			y -= rand.nextFloat() * (maxJumpHeigth / 3);
 		}
-		castle = new FinalGoal(WORLD_WIDTH / 2, y);
+		finalgoal = new FinalGoal(WORLD_WIDTH / 2, y);
 	}
 
 	public void update(float deltaTime, float accelX) {
 		updateKuba(deltaTime, accelX);
 		updatePlatforms(deltaTime);
-		updateSquirrels(deltaTime);
-		updateCoins(deltaTime);
+		updateBirds(deltaTime);
+		updateBackpacks(deltaTime);
 		if (kuba.state != Kuba.KUBA_STATE_HIT) {
 			checkCollisions();
 		}
@@ -121,19 +122,19 @@ public class World {
 		}
 	}
 	
-	private void updateSquirrels(float deltaTime) {
-		int len = squirrels.size();
+	private void updateBirds(float deltaTime) {
+		int len = birds.size();
 		for (int i = 0; i < len; i++) {
-			Bird squirrel = squirrels.get(i);
-			squirrel.update(deltaTime);
+			Bird bird = birds.get(i);
+			bird.update(deltaTime);
 		}
 	}
 	
-	private void updateCoins(float deltaTime) {
-		int len = coins.size();
+	private void updateBackpacks(float deltaTime) {
+		int len = backpacks.size();
 		for (int i = 0; i < len; i++) {
-			Coin coin = coins.get(i);
-			coin.update(deltaTime);
+			Backpack backpack = backpacks.get(i);
+			backpack.update(deltaTime);
 		}
 	}
 	
@@ -141,7 +142,7 @@ public class World {
 		checkPlatformCollisions();
 		//checkSquirrelCollisions();
 		checkItemCollisions();
-		checkCastleCollisions();
+		checkFinalGoalCollisions();
 	}
 
 	private void checkPlatformCollisions() {
@@ -177,24 +178,24 @@ public class World {
 //	}
 
 	private void checkItemCollisions() {
-		int len = coins.size();
+		int len = backpacks.size();
 		for (int i = 0; i < len; i++) {
-			Coin coin = coins.get(i);
-			if (OverlapTester.overlapRectangles(kuba.bounds, coin.bounds)) {
-				coins.remove(coin);
-				len = coins.size();
-				score += Coin.COIN_SCORE;
+			Backpack backpack = backpacks.get(i);
+			if (OverlapTester.overlapRectangles(kuba.bounds, backpack.bounds)) {
+				backpacks.remove(backpack);
+				len = backpacks.size();
+				score += Backpack.BACKPACK_SCORE;
 			}
 		}
 		if (kuba.velocity.y > 0) {
 			return;
 		}
 		
-		len = springs.size();
+		len = tents.size();
 		for (int i = 0; i < len; i++) {
-			Tent spring = springs.get(i);
-			if (kuba.position.y > spring.position.y) {
-				if (OverlapTester.overlapRectangles(kuba.bounds, spring.bounds)) {
+			Tent tent = tents.get(i);
+			if (kuba.position.y > tent.position.y) {
+				if (OverlapTester.overlapRectangles(kuba.bounds, tent.bounds)) {
 					kuba.hitSpring();
 					listener.highJump();
 				}
@@ -202,8 +203,8 @@ public class World {
 		}
 	}
 
-	private void checkCastleCollisions() {
-		if (OverlapTester.overlapRectangles(castle.bounds, kuba.bounds)) {
+	private void checkFinalGoalCollisions() {
+		if (OverlapTester.overlapRectangles(finalgoal.bounds, kuba.bounds)) {
 			state = WORLD_STATE_NEXT_LEVEL;
 		}
 	}

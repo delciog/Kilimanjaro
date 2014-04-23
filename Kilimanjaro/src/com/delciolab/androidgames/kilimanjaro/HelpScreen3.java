@@ -62,7 +62,8 @@ public class HelpScreen3 extends GLScreen {
 			if (event.type == TouchEvent.TOUCH_UP) {
 				if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HelpScreen4(game));
+					// game.setScreen(new HelpScreen4(game));
+					game.setScreen(new MainMenuScreen(game));
 					return;
 				}
 			}

@@ -67,17 +67,17 @@ public class GameScreen extends GLScreen {
 			}
 			
 			@Override
-			public void coin() {
-				 Assets.playSound(Assets.coinSound);
+			public void tent() {
+				 Assets.playSound(Assets.backPackSound);
 			}
 		};
 		world = new World(worldListener);
 		renderer = new WorldRenderer(glGraphics, batcher, world);
-		pauseBounds = new Rectangle(320 - 64, 480 - 64, 64, 64);
+		pauseBounds = new Rectangle(320 - 64, 480 - 64, 29, 29);
 		resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
 		quitBounds = new Rectangle(160 - 96, 240, 192, 36);
 		lastScore = 0;
-		scoreString = "meters: 0";
+		scoreString = "altitude: 0";
 		fpsCounter = new FPSCounter();
 	}
 	
@@ -132,7 +132,7 @@ public class GameScreen extends GLScreen {
 		world.update(deltaTime, game.getInput().getAccelX());
 		if (world.score != lastScore) {
 			lastScore = world.score;
-			scoreString = "" + lastScore;
+			scoreString = "altitude: " + lastScore;
 		}
 		if (world.state == World.WORLD_STATE_NEXT_LEVEL) {
 			state = GAME_LEVEL_END;
@@ -140,10 +140,10 @@ public class GameScreen extends GLScreen {
 		if (world.state == World.WORLD_STATE_GAME_OVER) {
 			state = GAME_OVER;
 			if (lastScore >= Settings.highScores[4]) {
-				scoreString = "new top altitute achieved: " + lastScore;
+				scoreString = "new altitude: " + lastScore;
 			}
 			else {
-				scoreString = "meters: " + lastScore;
+				scoreString = "altitude: " + lastScore;
 			}
 			Settings.addScore(lastScore);
 			Settings.save(game.getFileIO());
@@ -240,7 +240,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentRunning() {
-		batcher.drawSprite(320 - 30, 480 - 30, 30, 30, Assets.pause);
+		batcher.drawSprite(320 - 30, 480 - 30, 29, 29, Assets.pause);
 		Assets.font.drawText(batcher, scoreString, 16, 480 - 20);
 	}
 

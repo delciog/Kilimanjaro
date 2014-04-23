@@ -10,6 +10,11 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.AnalogClock;
+
 import com.delciolab.androidgames.framework.Game;
 import com.delciolab.androidgames.framework.Input.TouchEvent;
 import com.delciolab.androidgames.framework.gl.Camera2D;
@@ -52,6 +57,11 @@ public class HelpScreen2 extends GLScreen {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new HelpScreen3(game));
 					return;
+				}
+				if (OverlapTester.pointInRectangle(new Rectangle(0, 0, 200, 200), 200, 200)) {
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://uk.virginmoneygiving.com/KubaDoesKili"));
+					Activity start = new Activity();
+					start.startActivity(browserIntent);
 				}
 			}
 		}

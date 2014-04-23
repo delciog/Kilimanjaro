@@ -33,9 +33,10 @@ public class MainMenuScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 320, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		soundBounds = new Rectangle(0, 0, 64, 64);
-		playBounds = new Rectangle(160 - 150,  200 + 18,  300, 36);
-		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
+		playBounds = new Rectangle(180 - 5, 200 - 5,  60 + 10, 20 + 10);
+		helpBounds = new Rectangle(220 - 5, 100 - 5, 90 + 10, 20 + 10);
+		
+		
 		touchPoint = new Vector2();
 	}
 	
@@ -57,17 +58,21 @@ public class MainMenuScreen extends GLScreen {
 					game.setScreen(new GameScreen(game));
 					return;
 				}
-				if (OverlapTester.pointInRectangle(highscoresBounds, touchPoint)) {
-					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HighscoresScreen(game));
-					return;
-				}
+
 				if (OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
+					Assets.playSound(Assets.clickSound);
 					game.setScreen(new HelpScreen(game));
 					return;
 				}
 				if (OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
+					Assets.playSound(Assets.clickSound);
 					Settings.soundEnabled = !Settings.soundEnabled;
+					if (Settings.soundEnabled) {
+						Assets.music.play();
+					}
+					else {
+						Assets.music.pause();
+					}
 				}
 			}
 		}
@@ -91,8 +96,11 @@ public class MainMenuScreen extends GLScreen {
 		
 //		batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
 		batcher.drawSprite(160, 480 - 10 - 71, 236, 80, Assets.logo);
-		batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-		batcher.drawSprite(32, 32, 30, 30, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);
+		//batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
+		batcher.drawSprite(180, 200, 60, 20, Assets.playMenu);
+		//batcher.drawSprite(160, 250, 148, 18, Assets.highscoresMenu);
+		batcher.drawSprite(220, 100, 90, 20, Assets.helpMenu);
+		batcher.drawSprite(32, 32, 29, 29, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);
 		
 		batcher.endBatch();
 		

@@ -53,8 +53,8 @@ public class WorldRenderer {
 		renderKuba();
 		renderPlatforms();
 		renderItems();
-		renderSquirrels();
-		renderCastle();
+		renderBirds();
+		renderFinalGoal();
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 	}
@@ -90,32 +90,32 @@ public class WorldRenderer {
 	}
 
 	private void renderItems() {
-		int len = world.springs.size();
+		int len = world.tents.size();
 		for (int i = 0; i < len; i++) {
-			Tent spring = world.springs.get(i);
-			batcher.drawSprite(spring.position.x, spring.position.y + 5, 1, 1, Assets.spring);
+			Tent tent = world.tents.get(i);
+			batcher.drawSprite(tent.position.x, tent.position.y + 5, 1, 1, Assets.tent);
 		}
 		
-		len = world.coins.size();
+		len = world.backpacks.size();
 		for (int i = 0; i < len; i++) {
-			Coin coin = world.coins.get(i);
-			TextureRegion keyFrame = Assets.coinAnim.getKeyFrame(coin.stateTime,  Animation.ANIMATION_LOOPING);
+			Backpack coin = world.backpacks.get(i);
+			TextureRegion keyFrame = Assets.backpackAnim.getKeyFrame(coin.stateTime,  Animation.ANIMATION_LOOPING);
 			batcher.drawSprite(coin.position.x, coin.position.y, 1, 1, keyFrame);
 		}
 	}
 
-	private void renderSquirrels() {
-		int len = world.squirrels.size();
+	private void renderBirds() {
+		int len = world.birds.size();
 		for (int i = 0; i < len; i++) {
-			Bird squirrel = world.squirrels.get(i);
-			TextureRegion keyFrame = Assets.squirrelFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
+			Bird squirrel = world.birds.get(i);
+			TextureRegion keyFrame = Assets.birdFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
 			float side = squirrel.velocity.x < 0 ? -1 : 1;
 			batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 1, 1, keyFrame);
 		}
 	}
 
-	private void renderCastle() {
-		FinalGoal castle = world.castle;
-		batcher.drawSprite(castle.position.x, castle.position.y, 2, 2, Assets.castle);
+	private void renderFinalGoal() {
+		FinalGoal castle = world.finalgoal;
+		batcher.drawSprite(castle.position.x, castle.position.y, 2, 2, Assets.finalGoal);
 	}
 }

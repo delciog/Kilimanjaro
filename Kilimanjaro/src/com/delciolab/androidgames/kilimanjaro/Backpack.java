@@ -8,15 +8,15 @@ package com.delciolab.androidgames.kilimanjaro;
 
 import com.delciolab.androidgames.framework.GameObject;
 
-public class Coin extends GameObject {
-	public static final float COIN_WIDTH = 0.5f;
-	public static final float COIN_HEIGHT = 0.8f;
-	public static final float COIN_SCORE = 10;
+public class Backpack extends GameObject {
+	public static final float BACKPACK_WIDTH = 0.3f;
+	public static final float BACKPACK_HEIGHT = 0.4f;
+	public static final float BACKPACK_SCORE = 10;
 	
 	float stateTime;
 	
-	public Coin(float x, float y) {
-		super(x, y, COIN_WIDTH, COIN_HEIGHT);
+	public Backpack(float x, float y) {
+		super(x, y, BACKPACK_WIDTH, BACKPACK_HEIGHT);
 		stateTime = 0;
 	}
 	
