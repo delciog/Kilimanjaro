@@ -32,9 +32,9 @@ public class MainMenuScreen extends GLScreen {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 320, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
-		soundBounds = new Rectangle(0, 0, 64, 64);
-		playBounds = new Rectangle(180, 200,  60, 60);
-		helpBounds = new Rectangle(220, 100, 90, 20);
+		soundBounds = new Rectangle(0, 0, 74, 74);
+		playBounds = new Rectangle(180, 180,  100, 100);
+		helpBounds = new Rectangle(210, 80, 110, 60);
 		
 		
 		touchPoint = new Vector2();
@@ -97,7 +97,7 @@ public class MainMenuScreen extends GLScreen {
 //		batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
 		batcher.drawSprite(160, 480 - 10 - 71, 236, 80, Assets.logo);
 		//batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-		batcher.drawSprite(180, 200, 60, 20, Assets.playMenu);
+		batcher.drawSprite(180, 200, 100, 60, Assets.playMenu);
 		//batcher.drawSprite(160, 250, 148, 18, Assets.highscoresMenu);
 		batcher.drawSprite(220, 100, 90, 20, Assets.helpMenu);
 		batcher.drawSprite(32, 32, 29, 29, Settings.soundEnabled ? Assets.soundOn : Assets.soundOff);

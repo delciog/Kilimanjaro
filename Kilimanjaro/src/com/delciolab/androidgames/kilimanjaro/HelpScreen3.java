@@ -33,7 +33,7 @@ public class HelpScreen3 extends GLScreen {
 		super(game);
 		
 		guiCam = new Camera2D(glGraphics, 320, 480);
-		nextBounds = new Rectangle(320 - 32, 32, 32, 32);
+		nextBounds = new Rectangle(320 - 142, 0, 242, 142);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 1);
 	}

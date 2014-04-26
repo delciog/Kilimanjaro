@@ -33,10 +33,9 @@ public class MainMenu extends GLScreen {
 		
 		guiCam = new Camera2D(glGraphics, 320, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
-		soundBounds = new Rectangle(0, 0, 64, 64);
-		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-		helpBounds = new Rectangle(160 - 150, 200 - 36, 300, 36);
+		soundBounds = new Rectangle(0, 0, 74, 74);
+		playBounds = new Rectangle(180, 180,  100, 100);
+		helpBounds = new Rectangle(210, 80, 110, 60);
 		touchPoint = new Vector2();
 		
 		Settings.load(game.getFileIO());
