@@ -73,11 +73,11 @@ public class GameScreen extends GLScreen {
 		};
 		world = new World(worldListener);
 		renderer = new WorldRenderer(glGraphics, batcher, world);
-		pauseBounds = new Rectangle(320 - 64, 480 - 64, 29, 29);
-		resumeBounds = new Rectangle(160 - 96, 240, 192, 36);
+		pauseBounds = new Rectangle(320 - 64, 480 - 64, 60, 60);
+		resumeBounds = new Rectangle(160 - 96, 240 - 10, 192 + 20, 40 + 20);
 		quitBounds = new Rectangle(160 - 96, 240, 192, 36);
 		lastScore = 0;
-		scoreString = "altitude: 0";
+		scoreString = "score: 0";
 		fpsCounter = new FPSCounter();
 	}
 	
@@ -132,7 +132,7 @@ public class GameScreen extends GLScreen {
 		world.update(deltaTime, game.getInput().getAccelX());
 		if (world.score != lastScore) {
 			lastScore = world.score;
-			scoreString = "altitude: " + lastScore;
+			scoreString = "score: " + lastScore;
 		}
 		if (world.state == World.WORLD_STATE_NEXT_LEVEL) {
 			state = GAME_LEVEL_END;
@@ -140,10 +140,10 @@ public class GameScreen extends GLScreen {
 		if (world.state == World.WORLD_STATE_GAME_OVER) {
 			state = GAME_OVER;
 			if (lastScore >= Settings.highScores[4]) {
-				scoreString = "new altitude: " + lastScore;
+				scoreString = "total score: " + lastScore;
 			}
 			else {
-				scoreString = "altitude: " + lastScore;
+				scoreString = "score: " + lastScore;
 			}
 			Settings.addScore(lastScore);
 			Settings.save(game.getFileIO());
@@ -249,8 +249,8 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentLevelEnd() {
-		String topText = "You did it!";
-		String bottomText = "Well DONE!";
+		String topText = " You did it!";
+		String bottomText = "  WELL DONE!";
 		float topWidth = Assets.font.glyphWidth * topText.length();
 		float bottomWidth = Assets.font.glyphWidth * bottomText.length();
 		Assets.font.drawText(batcher, topText, 160 - topWidth / 2, 480 - 40);

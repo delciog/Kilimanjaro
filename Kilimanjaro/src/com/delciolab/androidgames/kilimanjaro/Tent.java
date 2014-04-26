@@ -9,8 +9,8 @@ package com.delciolab.androidgames.kilimanjaro;
 import com.delciolab.androidgames.framework.GameObject;
 
 public class Tent extends GameObject {
-	public static float TENT_WIDTH = 74.0f;
-	public static float TENT_HEIGHT = 54.0f;
+	public static float TENT_WIDTH = 0.7f;
+	public static float TENT_HEIGHT = 0.7f;
 	
 	public Tent(float x, float y) {
 		super(x, y, TENT_WIDTH, TENT_HEIGHT);

@@ -68,7 +68,7 @@ public class World {
 			
 			if (rand.nextFloat() > 0.9f && type != Platform.PLATFORM_TYPE_MOVING) {
 //				Tent tent = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.SPRING_HEIGHT / 2);
-				Tent tent = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.TENT_HEIGHT / 4);
+				Tent tent = new Tent(platform.position.x, platform.position.y + Platform.PLATFORM_HEIGHT / 2 + Tent.TENT_HEIGHT / 2);
 				tents.add(tent);
 			}
 			

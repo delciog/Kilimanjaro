@@ -53,43 +53,47 @@ public class Assets {
 	public static void load(GLGame game) {
 		background = new Texture(game, "background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 320, 480);
-		
 		items = new Texture(game, "items.png");
-		mainMenu = new TextureRegion(items, 300, 66, 28, 9); //ok
-		playMenu = new TextureRegion(items, 300, 66, 28, 9); // ok  
-		highscoresMenu = new TextureRegion(items, 0, 234, 74, 8); // ok  
-		helpMenu = new TextureRegion(items, 255, 66, 43, 9);// ok 
-		pauseMenu = new TextureRegion(items, 238, 224, 48, 8); //ok ???????????
-		ready = new TextureRegion(items, 255, 54, 44, 10); //ok
-		gameOver = new TextureRegion(items, 0, 244, 70, 9); //ok
-		highScoresRegion = new TextureRegion(Assets.items, 0, 234, 74, 8); //ok
-		logo = new TextureRegion(items, 0, 152, 236, 80); //ok ???????????
-		soundOff = new TextureRegion(items, 314, 140, 29, 29); //ok
-		soundOn = new TextureRegion(items, 288, 224, 29, 29); //ok
-		arrow = new TextureRegion(items, 287, 109, 29, 29); //ok
-		pause = new TextureRegion(items, 287, 77, 29, 29); //ok
-		
-		tent = new TextureRegion(items, 238, 152, 74, 54); //ok
-		finalGoal = new TextureRegion(items, 255, 0, 62, 52); //ok
+		mainMenu = new TextureRegion(items, 300, 66, 28, 9);
+		playMenu = new TextureRegion(items, 303, 66, 28, 9);  
+		highscoresMenu = new TextureRegion(items, 0, 234, 74, 8);  
+		helpMenu = new TextureRegion(items, 258, 66, 43, 9); 
+		pauseMenu = new TextureRegion(items, 238, 223, 48, 9);
+		ready = new TextureRegion(items, 254, 54, 44, 10);
+		gameOver = new TextureRegion(items, 0, 244, 70, 9);
+		highScoresRegion = new TextureRegion(Assets.items, 0, 234, 74, 8);
+		logo = new TextureRegion(items, 0, 152, 236, 80);
+		soundOff = new TextureRegion(items, 314, 140, 29, 29);
+		soundOn = new TextureRegion(items, 288, 224, 29, 29);
+		arrow = new TextureRegion(items, 287, 109, 29, 29);
+		pause = new TextureRegion(items, 287, 77, 29, 29);
+		tent = new TextureRegion(items, 238, 152, 74, 54);
+		finalGoal = new TextureRegion(items, 255, 0, 62, 52);
 		
 		backpackAnim = new Animation(0.2f, new TextureRegion(items, 319, 77, 20, 20), // ok - consider anim?
 										new TextureRegion(items, 319, 77, 20, 20),
 										new TextureRegion(items, 319, 77, 20, 20),
 										new TextureRegion(items, 319, 77, 20, 20));
-		kubaJump = new Animation(0.2f, new TextureRegion(items, 255, 113, 30, 34),
-                						new TextureRegion(items, 255, 77, 30, 34));
-		kubaFall = new Animation(0.2f, new TextureRegion(items, 255, 113, 30, 34),
-										new TextureRegion(items, 255, 77, 30, 34));
-		kubaHit = new TextureRegion(items, 255, 77, 30, 34);
+		
+		kubaJump = new Animation(0.2f, new TextureRegion(items, 257, 113, 30, 34),
+                						new TextureRegion(items, 257, 77, 30, 34));
+		
+		kubaFall = new Animation(0.2f, new TextureRegion(items, 257, 113, 30, 34),
+										new TextureRegion(items, 257, 77, 30, 34));
+		
+		kubaHit = new TextureRegion(items, 257, 77, 30, 34);
+		
 		birdFly = new Animation(0.2f, new TextureRegion(items, 319, 0, 28, 27),
 		                    			new TextureRegion(items, 314, 171, 28, 28));
+		
 		platform = new TextureRegion(items, 204, 234, 62, 14);
+		
 		breakingPlatform = new Animation(0.2f, new TextureRegion(items, 204, 234, 62, 14), // ok
 					                     new TextureRegion(items, 140, 234, 62, 14),
 					                     new TextureRegion(items, 76, 234, 62, 13),
 					                     new TextureRegion(items, 238, 208, 60, 14));
 		
-		font = new Font(items, 0, 1, 16, 16, 25);
+		font = new Font(items, 0, -1, 16, 16, 25);
 
 		music = game.getAudio().newMusic("music.mp3");
 		music.setLooping(true);

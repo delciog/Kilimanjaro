@@ -93,14 +93,14 @@ public class WorldRenderer {
 		int len = world.tents.size();
 		for (int i = 0; i < len; i++) {
 			Tent tent = world.tents.get(i);
-			batcher.drawSprite(tent.position.x, tent.position.y + 5, 1, 1, Assets.tent);
+			batcher.drawSprite(tent.position.x, tent.position.y + 0.1f, 1.4f, 1.4f, Assets.tent);
 		}
 		
 		len = world.backpacks.size();
 		for (int i = 0; i < len; i++) {
-			Backpack coin = world.backpacks.get(i);
-			TextureRegion keyFrame = Assets.backpackAnim.getKeyFrame(coin.stateTime,  Animation.ANIMATION_LOOPING);
-			batcher.drawSprite(coin.position.x, coin.position.y, 1, 1, keyFrame);
+			Backpack backPack = world.backpacks.get(i);
+			TextureRegion keyFrame = Assets.backpackAnim.getKeyFrame(backPack.stateTime,  Animation.ANIMATION_LOOPING);
+			batcher.drawSprite(backPack.position.x, backPack.position.y, 0.6f , 0.6f, keyFrame);
 		}
 	}
 
@@ -110,7 +110,7 @@ public class WorldRenderer {
 			Bird squirrel = world.birds.get(i);
 			TextureRegion keyFrame = Assets.birdFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
 			float side = squirrel.velocity.x < 0 ? -1 : 1;
-			batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 1, 1, keyFrame);
+			batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 0.8f, 0.8f, keyFrame);
 		}
 	}
 

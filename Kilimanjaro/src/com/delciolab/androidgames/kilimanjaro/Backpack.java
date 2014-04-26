@@ -11,7 +11,7 @@ import com.delciolab.androidgames.framework.GameObject;
 public class Backpack extends GameObject {
 	public static final float BACKPACK_WIDTH = 0.3f;
 	public static final float BACKPACK_HEIGHT = 0.4f;
-	public static final float BACKPACK_SCORE = 10;
+	public static final float BACKPACK_SCORE = 150;
 	
 	float stateTime;
 	
