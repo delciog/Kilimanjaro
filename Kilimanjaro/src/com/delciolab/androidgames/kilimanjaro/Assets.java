@@ -84,6 +84,8 @@ public class Assets {
 		kubaHit = new TextureRegion(items, 257, 77, 30, 34);
 		
 		birdFly = new Animation(0.2f, new TextureRegion(items, 319, 0, 28, 27),
+		                    			new TextureRegion(items, 314, 171, 28, 28),
+		                    			new TextureRegion(items, 319, 0, 28, 27),
 		                    			new TextureRegion(items, 314, 171, 28, 28));
 		
 		platform = new TextureRegion(items, 204, 234, 62, 14);
@@ -97,13 +99,13 @@ public class Assets {
 
 		music = game.getAudio().newMusic("music.mp3");
 		music.setLooping(true);
-		music.setVolume(1.5f);
+		music.setVolume(1.0f);
 		if (Settings.soundEnabled) {
 			music.play();
 		}
 		jumpSound = game.getAudio().newSound("jump.wav");
 		highJumpSound = game.getAudio().newSound("highjump.ogg");
-		hitSound = game.getAudio().newSound("hit.ogg");
+		hitSound = game.getAudio().newSound("crow.wav");
 		backPackSound = game.getAudio().newSound("coin.ogg");
 		clickSound = game.getAudio().newSound("click.wav");
 	}

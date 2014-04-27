@@ -13,7 +13,7 @@ public class Bird extends DynamicGameObject {
 	public static final float BIRD_HEIGHT = 0.6f;
 	public static final float BIRD_VELOCITY = 3f;
 	
-	float stateTime = 0;
+	float stateTime;
 	
 	public Bird(float x, float y) {
 		super(x, y, BIRD_WIDTH, BIRD_HEIGHT);

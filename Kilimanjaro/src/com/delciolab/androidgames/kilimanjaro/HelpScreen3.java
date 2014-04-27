@@ -40,7 +40,7 @@ public class HelpScreen3 extends GLScreen {
 	
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help2.png");
+		helpImage = new Texture(glGame, "about3.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 320, 480);
 	}
 	
@@ -62,8 +62,8 @@ public class HelpScreen3 extends GLScreen {
 			if (event.type == TouchEvent.TOUCH_UP) {
 				if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					// game.setScreen(new HelpScreen4(game));
-					game.setScreen(new MainMenuScreen(game));
+					game.setScreen(new HelpScreen4(game));
+					//game.setScreen(new MainMenuScreen(game));
 					return;
 				}
 			}

@@ -33,14 +33,14 @@ public class HelpScreen4 extends GLScreen {
 		super(game);
 		
 		guiCam = new Camera2D(glGraphics, 320, 480);
-		nextBounds = new Rectangle(320 - 64, 0, 32, 32);
+		nextBounds = new Rectangle(320 - 142, 0, 242, 142);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 1);
 	}
 	
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help3.png");
+		helpImage = new Texture(glGame, "about4.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 320, 480);
 	}
 	

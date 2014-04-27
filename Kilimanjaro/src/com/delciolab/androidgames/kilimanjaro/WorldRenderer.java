@@ -50,11 +50,11 @@ public class WorldRenderer {
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		
 		batcher.beginBatch(Assets.items);
-		renderKuba();
 		renderPlatforms();
 		renderItems();
 		renderBirds();
 		renderFinalGoal();
+		renderKuba();
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 	}
@@ -107,10 +107,11 @@ public class WorldRenderer {
 	private void renderBirds() {
 		int len = world.birds.size();
 		for (int i = 0; i < len; i++) {
-			Bird squirrel = world.birds.get(i);
-			TextureRegion keyFrame = Assets.birdFly.getKeyFrame(squirrel.stateTime, Animation.ANIMATION_LOOPING);
-			float side = squirrel.velocity.x < 0 ? -1 : 1;
-			batcher.drawSprite(squirrel.position.x, squirrel.position.y, side * 0.8f, 0.8f, keyFrame);
+			Bird bird = world.birds.get(i);
+			
+			TextureRegion keyFrame = Assets.birdFly.getKeyFrame(bird.stateTime, Animation.ANIMATION_LOOPING);
+			float side = bird.velocity.x < 0 ? -1 : 1;
+			batcher.drawSprite(bird.position.x, bird.position.y, side * 0.8f, 0.8f, keyFrame);
 		}
 	}
 

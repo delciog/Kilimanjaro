@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -100,7 +99,7 @@ public class HelpScreen2 extends GLScreen {
 
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help1.png");
+		helpImage = new Texture(glGame, "about2.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 320, 480);
 	}
 
