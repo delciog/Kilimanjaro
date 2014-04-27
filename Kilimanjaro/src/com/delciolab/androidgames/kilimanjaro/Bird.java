@@ -18,6 +18,7 @@ public class Bird extends DynamicGameObject {
 	public Bird(float x, float y) {
 		super(x, y, BIRD_WIDTH, BIRD_HEIGHT);
 		velocity.set(BIRD_VELOCITY, 0);
+		stateTime = 0;
 	}
 	
 	public void update(float deltaTime) {

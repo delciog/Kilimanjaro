@@ -18,7 +18,7 @@ public class World {
 		public void jump();
 		public void highJump();
 		public void hit();
-		public void tent();
+		public void backpack();
 	}
 		
 	public static final float WORLD_WIDTH = 10;

@@ -14,7 +14,7 @@ import javax.microedition.khronos.opengles.GL10;
 import com.delciolab.androidgames.framework.Game;
 import com.delciolab.androidgames.framework.Input.TouchEvent;
 import com.delciolab.androidgames.framework.gl.Camera2D;
-import com.delciolab.androidgames.framework.gl.FPSCounter;
+//import com.delciolab.androidgames.framework.gl.FPSCounter;
 import com.delciolab.androidgames.framework.gl.SpriteBatcher;
 import com.delciolab.androidgames.framework.impl.GLScreen;
 import com.delciolab.androidgames.framework.math.OverlapTester;
@@ -41,7 +41,7 @@ public class GameScreen extends GLScreen {
 	Rectangle quitBounds;
 	int lastScore;
 	String scoreString;
-	FPSCounter fpsCounter;
+	//FPSCounter fpsCounter;
 	
 	public GameScreen(Game game) {
 		super(game);
@@ -67,7 +67,7 @@ public class GameScreen extends GLScreen {
 			}
 			
 			@Override
-			public void tent() {
+			public void backpack() {
 				 Assets.playSound(Assets.backPackSound);
 			}
 		};
@@ -78,7 +78,7 @@ public class GameScreen extends GLScreen {
 		quitBounds = new Rectangle(160 - 96, 240, 192, 36);
 		lastScore = 0;
 		scoreString = "score: 0";
-		fpsCounter = new FPSCounter();
+		//fpsCounter = new FPSCounter();
 	}
 	
 	@Override
@@ -232,7 +232,7 @@ public class GameScreen extends GLScreen {
 		}
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
-		fpsCounter.logFrame();
+		//fpsCounter.logFrame();
 	}
 
 	private void presentReady() {

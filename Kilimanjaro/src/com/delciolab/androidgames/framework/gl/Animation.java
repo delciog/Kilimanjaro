@@ -21,7 +21,7 @@ public class Animation {
 	public TextureRegion getKeyFrame(float stateTime, int mode) {
 		int frameNumber = (int)(stateTime / frameDuration);
 		
-		if (mode == ANIMATION_LOOPING) {
+		if (mode == ANIMATION_NONLOOPING) {
 			frameNumber = Math.min(keyFrames.length - 1, frameNumber);
 		}
 		else {
