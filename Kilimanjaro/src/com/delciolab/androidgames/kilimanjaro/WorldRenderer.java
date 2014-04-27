@@ -119,4 +119,5 @@ public class WorldRenderer {
 		FinalGoal castle = world.finalgoal;
 		batcher.drawSprite(castle.position.x, castle.position.y, 2, 2, Assets.finalGoal);
 	}
+	
 }
